@@ -9,14 +9,30 @@
  * @since 2.2.0
  */
 ?>
+<?php
+	$odin_general_opts = get_option( 'socials' );
 
+	$face = $odin_general_opts['facebook'];
+	$inst = $odin_general_opts['instagram'];
+	$yout = $odin_general_opts['youtube'];
+	$face = coloca_http($face);
+?>
 		</div><!-- #main -->
 
 		<footer id="footer" role="contentinfo">
-			<div class="site-info">
-				<span>&copy; <?php echo date( 'Y' ); ?> <a href="<?php echo home_url(); ?>"><?php bloginfo( 'name' ); ?></a> - <?php _e( 'All rights reserved', 'odin' ); ?> | <?php echo sprintf( __( 'Powered by the <a href="%s" rel="nofollow" target="_blank">Odin</a> forces and <a href="%s" rel="nofollow" target="_blank">WordPress</a>.', 'odin' ), 'http://wpod.in/', 'http://wordpress.org/' ); ?></span>
-			</div><!-- .site-info -->
+			<div id="" class="centro col-md-10">
+				<div class="site-info">
+					<span>Faccioli Films Ltda. &copy; <?php echo date( 'Y' ); ?> </span>
+				</div><!-- .site-info -->
+				<div class="site-social">
+					<a class="social-img" id="facebook" target="_blanck" href='<?php echo $face;?>'></a>
+					<a class="social-img" id="instagram" target="_blanck" href="http://www.instagram.com"></a>
+					<a class="social-img" id="youtube"  target="_blanck" href="http://www.youtube.com" ></a>
+				</div><!-- .site-social -->
+			</div>
+			<div class="clearfix"></div>
 		</footer><!-- #footer -->
+		
 	</div><!-- .container -->
 
 	<?php wp_footer(); ?>

@@ -26,10 +26,10 @@ if ( ! isset( $content_width ) ) {
 require_once get_template_directory() . '/core/classes/class-bootstrap-nav.php';
 require_once get_template_directory() . '/core/classes/class-shortcodes.php';
 require_once get_template_directory() . '/core/classes/class-thumbnail-resizer.php';
-// require_once get_template_directory() . '/core/classes/class-theme-options.php';
+require_once get_template_directory() . '/core/classes/class-theme-options.php';
 // require_once get_template_directory() . '/core/classes/class-options-helper.php';
-// require_once get_template_directory() . '/core/classes/class-post-type.php';
-// require_once get_template_directory() . '/core/classes/class-taxonomy.php';
+require_once get_template_directory() . '/core/classes/class-post-type.php';
+require_once get_template_directory() . '/core/classes/class-taxonomy.php';
 // require_once get_template_directory() . '/core/classes/class-metabox.php';
 // require_once get_template_directory() . '/core/classes/abstracts/abstract-front-end-form.php';
 // require_once get_template_directory() . '/core/classes/class-contact-form.php';
@@ -263,3 +263,145 @@ require_once get_template_directory() . '/inc/plugins-support.php';
  * Custom template tags.
  */
 require_once get_template_directory() . '/inc/template-tags.php';
+////////google-fonts
+function load_fonts() {
+            wp_register_style('googleFonts', 'http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext');
+            wp_enqueue_style( 'googleFonts');
+        }
+    
+    add_action('wp_print_styles', 'load_fonts');
+
+//////////////////////google-fonts//////////////////////////
+////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////
+////////////////Opcoes do tema////////////////
+////////////////////////////////////////////////////////////////
+$odin_theme_options = new Odin_Theme_Options( 
+    'opcoes', // Slug/ID da página (Obrigatório)
+    __( 'Opções do tema', 'odin' ), // Titulo da página (Obrigatório)
+    'manage_options' // Nível de permissão (Opcional) [padrão é manage_options]
+);
+$odin_theme_options->set_tabs(
+    array(
+		array(
+			'id' => 'socials', // ID da aba e nome da entrada no banco de dados.
+			'title' => __( 'Configurações', 'odin' ), // Título da aba.
+		),
+    )
+);
+$odin_theme_options->set_fields(
+    array(
+        'general_section' => array(
+            'tab'   => 'socials', // Sessão da aba odin_general
+            'title' => __( 'Redes Sociais', 'odin' ),
+            'fields' => array(
+                array(
+                    'id' => 'facebook',
+                    'label' => __( 'Facebook', 'odin' ),
+                    'type' => 'text',
+                    'default' => '',
+                ),
+                array(
+                    'id' => 'instagram',
+                    'label' => __( 'Instagram', 'odin' ),
+                    'type' => 'text'
+                ),
+				array(
+                    'id' => 'youtube',
+                    'label' => __( 'Youtube', 'odin' ),
+                    'type' => 'text'
+                )
+            )
+        ),        
+    )
+);
+function coloca_http($endereco){
+	$http = substr ($endereco, 0 , 7);
+	if ($http == 'http://'){
+		return $endereco;
+	}
+	else {
+		return 'http://'.$endereco;
+	}
+}
+
+////////////////////////////////////////////////////////////////
+////////////////Opcoes do tema////////////////
+////////////////////////////////////////////////////////////////
+
+
+////////////////////////////////////////////////////////////////
+////////////////Custom post types////////////////
+////////////////////////////////////////////////////////////////
+
+////////////////Portfolio////////////////
+
+
+function portfolio_cpt(){
+	$portfolio = new Odin_Post_Type(
+	    'Item de Portfólio', // Nome (Singular) do Post Type.
+	    'portfolio' // Slug do Post Type.
+	);
+	$portfolio->set_labels(
+	    array(
+	        'menu_name' => __( 'Itens de Portfólio', 'odin' )
+	    )
+	);
+	$portfolio->set_arguments(
+        array(
+		 	'menu_icon' => 'dashicons-video-alt3',
+      		'supports' => array( 'title', 'editor' )
+    	)
+	);
+	$porfolio_cat = new Odin_Taxonomy(
+	    'Categoria', // Nome (Singular) da nova Taxonomia.
+	    'port_categoria', // Slug do Taxonomia.
+	    'portfolio' // Nome do tipo de conteúdo que a taxonomia irá fazer parte.
+	);
+	$porfolio_cat->set_labels(
+		array(
+			'add_new_item' => 'Adicionar Nova'
+		)
+	);
+}
+add_action( 'init', 'portfolio_cpt', 1 );
+
+
+
+////////////////Portfolio////////////////
+
+////////////////Clientes////////////////
+
+
+function clientes_cpt(){
+	$clientes = new Odin_Post_Type(
+	    'Cliente', // Nome (Singular) do Post Type.
+	    'clientes' // Slug do Post Type.
+	);
+	$clientes->set_labels(
+	    array(
+	        'menu_name' => __( 'Clientes', 'odin' )
+	    )
+	);
+	$clientes->set_arguments(
+        array(
+		 	'menu_icon' => 'dashicons-universal-access',
+	  		'supports' => array( 'title', 'editor' )
+    	)
+	);
+	$clientes_cat = new Odin_Taxonomy(
+	    'Categoria', // Nome (Singular) da nova Taxonomia.
+	    'clie_categoria', // Slug do Taxonomia.
+	    'clientes' // Nome do tipo de conteúdo que a taxonomia irá fazer parte.
+	);
+	$clientes_cat->set_labels(
+		array(
+			'add_new_item' => 'Adicionar Nova'
+		)
+	);
+}
+add_action( 'init', 'clientes_cpt', 1 );
+///////////////////////////////////////////////////////////////
+////////////////Custom post types////////////////
+////////////////////////////////////////////////////////////////
