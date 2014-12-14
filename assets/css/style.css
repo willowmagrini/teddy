@@ -133,6 +133,24 @@ float:none;
 	border-left:1px solid black;
 	margin-right:10px;
 }
+.video-portfolio img{
+	display:inline-block;
+	width:100%;
+	
+}
+.video-portfolio:nth-child(5n+1) {
+	margin-left: -2%;
+	
+}
+.video-portfolio{
+	display:inline-block;
+	padding-left: 2%;
+}
+
+iframe{
+	width: 100%;
+	height: auto;
+}
 /*portfolio*/
 /*reponsividade*/
 

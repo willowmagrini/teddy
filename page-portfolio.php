@@ -8,7 +8,7 @@
 get_header();?>
 	<?php
 	$port_categoria = get_terms( 'port_categoria', array(
- 		'orderby'    => 'count',
+ 		'orderby'    => '',
  		'hide_empty' => 0,
  		)
  	);
@@ -24,7 +24,7 @@ get_header();?>
 		<div id="content-portfolio" class="site-content col-md-9" role="main">
 			<ul id="menu-port" class="sem-margem">
 			    <?php foreach ( $port_categoria as $cat ) { ?>
-			    <li id="cat-<?php echo $cat->term_id; ?>"><a class="<?php echo $cat->slug; ?> ajax" onclick="cat_ajax_get('<?php echo $cat->term_id; ?>');" href="#"><?php echo $cat->name; ?></a></li>
+			    <li class="categorias_portfolio" id="<?php echo $cat->slug; ?>"><a class="<?php echo $cat->slug; ?> ajax"  href="#"><?php echo $cat->name; ?></a></li>
 
 			    <?php } ?>
 			</ul>
