@@ -80,7 +80,7 @@
 					</nav><!-- #main-menu -->
 				</div><!--logo-menu-->
 			</div><!--topo do header-->
-			<div id="h-fundo"><!--fundo do header-->
+			<div id="h-fundo" class="clearfix"><!--fundo do header-->
 				
 			</div><!--fundo do header-->
 			
