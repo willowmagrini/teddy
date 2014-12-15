@@ -190,7 +190,7 @@ add_action( 'after_switch_theme', 'odin_flush_rewrite' );
  */
 function odin_enqueue_scripts() {
 	$template_url = get_template_directory_uri();
-
+	
 	// Loads Odin main stylesheet.
 	wp_enqueue_style( 'odin-style', get_stylesheet_uri(), array(), null, 'all' );
 
@@ -458,6 +458,10 @@ elseif ( is_page_template( 'page-clientes.php' )) {
 		wp_register_script('clientes-js', ( get_bloginfo('template_url').'/assets/js/clientescript.js'), array('jquery')); 
 		wp_enqueue_script('clientes-js'); 
 	}
+elseif  (is_page_template( 'page-contato.php' )){
+	//maps
+	wp_enqueue_script('google-maps', 'https://maps.googleapis.com/maps/api/js');
+}
 }
 add_action( 'wp_print_scripts', 'scripts'); // now just run the function
 ///////////////////////////////////////////////////////////////
@@ -589,3 +593,30 @@ remove_filter( 'the_content', 'wpautop' );
 ///////////////////////////////////////////////////////////////////
 //////////////////shortcode [slider]///////////////////////////////////   /
 /////////////////////////////////////////////////////////////////////////////
+
+
+//////////////////////////////////////////////////////////////	///////////////////////////////////////////////////////////////
+	/////////////////////custom logo/////////////////////////////
+		///////////////////////////////////////////////////////////////
+
+		function my_login_logo() { ?>
+		    <style type="text/css">
+		        body.login div#login h1 a {
+		            background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/assets/images/logo-preto.png);
+		            padding-bottom: 0;
+					padding-bottom: 0;
+					width: 180px;
+					height: 180px;
+					background-size: 180px;
+					
+		        }
+				body, #loginform{
+					background:#000;
+				}
+		    </style>
+		<?php }
+		add_action( 'login_enqueue_scripts', 'my_login_logo' );
+
+//////////////////////////////////////////////////////////////	///////////////////////////////////////////////////////////////
+	/////////////////////custom logo/////////////////////////////
+		///////////////////////////////////////////////////////////////

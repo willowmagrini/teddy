@@ -231,6 +231,52 @@ text-align: center;
 	border-radius:6px;
 }
 /*estrutura*/
+/*clientes*/
+.clientes{
+	display:inline-block;
+}
+#client #lista-videos .clearfix {
+margin-bottom: 5px;
+}
+#email{
+	width:100%;
+}
+/*clientes*/
+
+/*contato*/
+.form-group > *{
+	display:inline-block;
+	
+}
+label{
+	margin-top: 5px;
+}
+.form-group input{
+	max-width:80%;
+	float:right;
+}
+.form-group textarea{
+	width:100%;
+	height: 100px;
+}
+#mensagem{
+	width:100%;
+}
+#map-canvas{
+	width:45%;
+	height:400px;
+	margin-right:5%;
+}
+#endereco a{
+	text-decoration:none;
+	color:#000;
+}
+#endereco a:hover{
+	color:#dca61b;
+}
+/*contato*/
+
+
 /*reponsividade*/
 
 @media (min-width: 768px){
