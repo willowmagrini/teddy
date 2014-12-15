@@ -14,7 +14,7 @@ get_header(); ?>
 
 	<div id="primary" class="<?php echo odin_classes_page_full(); ?>">
 		<div class="col-md-2"></div>
-		<div id="content-portfolio" class="site-content col-md-8" role="main">
+		<div id="content" class="site-content col-md-8" role="main">
 
 			<?php
 				// Start the Loop.

@@ -453,6 +453,11 @@ if ( is_page_template( 'page-portfolio.php' )) {
 		wp_register_script('portfolio-js', ( get_bloginfo('template_url').'/assets/js/portfolioscript.js'), array('jquery')); 
 		wp_enqueue_script('portfolio-js'); 
 	}
+
+elseif ( is_page_template( 'page-clientes.php' )) { 
+		wp_register_script('clientes-js', ( get_bloginfo('template_url').'/assets/js/clientescript.js'), array('jquery')); 
+		wp_enqueue_script('clientes-js'); 
+	}
 }
 add_action( 'wp_print_scripts', 'scripts'); // now just run the function
 ///////////////////////////////////////////////////////////////
@@ -488,8 +493,12 @@ function base_pagination() {
 
 //////////////////////////////////////////////////////////////////
 //////////////////paginacao///////////////////////////////////   /
-/////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+/////////////////////thumsize///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+add_image_size( 'slider', 665, 350, true ); // 220 pixels wide by 180 pixels tall, soft proportional crop mode
+/////////////////////thumsize///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 ///////////////////////////////////////////////////////////////////
@@ -498,6 +507,8 @@ function base_pagination() {
 			    
 /////////////////////////////////////////////////////////////////////////////
 //willowloop para exibir posts com thumbnail como shotcode
+remove_filter( 'the_content', 'wpautop' );
+
 	function willow_loop_shortcode( $atts ) {
 	    extract( shortcode_atts( array(
 	        'tipo' => 'slider',
@@ -505,9 +516,7 @@ function base_pagination() {
 			'tag' => '',
 			'pula'=> '',
 	    ), $atts ) );
-	    $output = 	'<div class="clear"></div>
-					<div id="myCarousel" class="carousel slide" data-ride="carousel">';
-	    $args = array(
+	   $args = array(
 	        'post_type' => $tipo,
 			'category' => $categoria,
 			'offset' => $pula,
@@ -518,8 +527,7 @@ function base_pagination() {
 	    $willow_query = new  WP_Query( $args );
 		$num=$willow_query->post_count;
 		$count=0;
-		echo 'count:'.$count;
-		echo '<div id="myCarousel" class="carousel slide" data-ride="carousel">
+		echo '<div id="myCarousel" class="col-md-6 carousel slide" data-ride="carousel">
 		
 		<!-- Carousel indicators -->
 	    		<ol class="carousel-indicators">';
@@ -540,10 +548,10 @@ function base_pagination() {
 					echo ' active';
 				}
 				echo'">
-					<div class="img-carousel col-md-6">';
+					<div class="img-carousel">';
 			    		the_post_thumbnail('slider');
 					echo '</div>
-					<div class="carousel-caption col-md-6">
+					<div class="carousel-caption ">
 		           	  	<div class="titulo-carousel">
 			           		<h3>';
 								the_title();

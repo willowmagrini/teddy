@@ -222,7 +222,15 @@ text-align: center;
 
 
 /*home*/
-
+/*estrutura*/
+#myCarousel{
+	margin-right:5%;
+	width:45%;
+}
+.attachment-slider,.carousel-control{
+	border-radius:6px;
+}
+/*estrutura*/
 /*reponsividade*/
 
 @media (min-width: 768px){
