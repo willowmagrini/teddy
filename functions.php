@@ -402,6 +402,29 @@ function clientes_cpt(){
 	);
 }
 add_action( 'init', 'clientes_cpt', 1 );
+
+////////////////slider////////////////
+
+
+function slider_cpt(){
+	$slider = new Odin_Post_Type(
+	    'Slide', // Nome (Singular) do Post Type.
+	    'slider' // Slug do Post Type.
+	);
+	$slider->set_labels(
+	    array(
+	        'menu_name' => __( 'Slider', 'odin' )
+	    )
+	);
+	$slider->set_arguments(
+        array(
+		 	'menu_icon' => 'dashicons-format-gallery',
+	  		'supports' => array( 'title', 'editor', 'thumbnail' )
+    	)
+	);
+	
+}
+add_action( 'init', 'slider_cpt', 1 );
 ///////////////////////////////////////////////////////////////
 ////////////////Custom post types////////////////
 ////////////////////////////////////////////////////////////////
@@ -413,7 +436,7 @@ add_action( 'init', 'clientes_cpt', 1 );
 function my_register_fields()
 {
 
-    include_once( TEMPLATEPATH.'/assets/php/acf-video.php');
+    include_once( get_template_directory_uri().'/assets/php/acf-video.php');
 }
 add_action('acf/register_fields', 'my_register_fields');
 
@@ -438,6 +461,10 @@ add_action( 'wp_print_scripts', 'scripts'); // now just run the function
 ////////////////////////////////////////////////////////////////
 
 
+//////////////////////////////////////////////////////////////////
+//////////////////paginacao///////////////////////////////////   /
+/////////////////////////////////////////////////////////////////////////////
+
 function base_pagination() {
     global $wp_query;
 
@@ -459,3 +486,99 @@ function base_pagination() {
         echo '</div><!--// end .pagination -->';
     }
 }
+
+//////////////////////////////////////////////////////////////////
+//////////////////paginacao///////////////////////////////////   /
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+///////////////////////////////////////////////////////////////////
+//////////////////shortcode [slider]///////////////////////////////////   /
+/////////////////////////////////////////////////////////////////////////////
+//willowloop para exibir posts com thumbnail como shotcode
+	function willow_loop_shortcode( $atts ) {
+	    extract( shortcode_atts( array(
+	        'tipo' => 'slider',
+			'categoria'=> '',
+			'tag' => '',
+			'pula'=> '',
+	    ), $atts ) );
+	    $output = 	'<div class="clear"></div>
+					<div id="slider-oficinas" class="flexslider no-bg no-bullets"><script type="text/javascript" charset="utf-8">
+					                jQuery(document).ready(function ($) {
+					                    $(window).load(function() {
+					                        $(".flexslider").flexslider({
+					                            after: function(){
+					                                $(window).trigger("contentResized");
+					                            }
+					                        });
+
+					                    });
+					                });
+					                </script><ul class="slides">';
+	    $args = array(
+	        'post_type' => $tipo,
+			'category' => $categoria,
+			'offset' => $pula,
+			'tag'    => $tag,
+			'orderby' => 'menu_order',
+			'order'=>'ASC'
+	    );
+	    $willow_query = new  WP_Query( $args );
+		while ( $willow_query->have_posts() ) : $willow_query->the_post();
+	    $link = get_field('link2');   
+	    $regulamento = get_field('regulamento');   
+		if ($tipo == 'oficinas'){
+					$output .= '
+						<li class ="item-oficinas destaques">'.
+							'<div class="titulo_destaque"><a href="'.
+			                   get_permalink().'">'.get_the_title().'</a>
+							</div>
+							
+							<div class="imagem_destaque">
+								<a href="'.get_permalink().'">'.get_the_post_thumbnail().'</a>
+							</div>
+							
+							<div class="link_destaque">
+								<a href="'.get_permalink().'">'. get_the_excerpt(4000).'</a>
+								<div class="botoes-destaque">';
+								if ($regulamento != ''){
+									$output .= 		'<div class="destaque botao regulamento">
+														<a target=_blank href="'.$regulamento.'">REGULAMENTO</a>
+													</div>';
+								}
+								if ($link != ''){
+									$output .= 	'<div class="botao destaque inscricao">
+														<a target=_blank href="'.$link.'"/>INSCRIÇÃO</a>
+													</div>';
+								}
+					
+				$output .=		'</div><!--botoes-destaque-->
+							</div><!--link_destaque-->
+						</li><!--item-oficinas destaques-->';		
+			}
+			else{
+				$output .= '<li class ="destaques">
+								<div class="titulo_destaque meio">
+									<a href="'.get_permalink().'">'. get_the_title().'</a>
+								</div>
+								<div class="link_destaque meio">
+									<a href="'.get_permalink().'">' . get_the_excerpt(4000)."</a>
+								</div>
+							</li>";
+			}
+			
+	       
+	           
+	    endwhile;
+	    wp_reset_query();
+	    $output .= '</ul></div>'; //fecha flexslider e slides 
+	    return $output;
+	}
+	add_shortcode('willowloop', 'willow_loop_shortcode');
+// fim do willowloop
+
+///////////////////////////////////////////////////////////////////
+//////////////////shortcode [slider]///////////////////////////////////   /
+/////////////////////////////////////////////////////////////////////////////

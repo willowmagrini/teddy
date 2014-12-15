@@ -67,7 +67,7 @@ float:none;
 }
 #primary{
 	margin-top:50px;
-	font-size:1.1em;
+		font-size:1.1em;
 }
 /*conteudo*/
 /*footer	*/
@@ -205,6 +205,24 @@ text-align: center;
 	margin:20px 0;
 }
 /*institucional*/
+/*home*/
+#home{
+	background-color:#000;
+}
+.linguas a{ 
+	padding:10px;
+	margin-top:10px;
+	}
+#home #content{
+	text-align:center;
+}
+#home img{
+	margin-bottom:35px;
+}
+
+
+/*home*/
+
 /*reponsividade*/
 
 @media (min-width: 768px){
