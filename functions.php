@@ -435,8 +435,7 @@ add_action( 'init', 'slider_cpt', 1 );
 
 function my_register_fields()
 {
-
-    include_once( get_template_directory_uri().'/assets/php/acf-video.php');
+    include_once( get_stylesheet_directory().'/assets/php/acf-video.php');
 }
 add_action('acf/register_fields', 'my_register_fields');
 
@@ -495,6 +494,8 @@ function base_pagination() {
 
 ///////////////////////////////////////////////////////////////////
 //////////////////shortcode [slider]///////////////////////////////////   /
+
+			    
 /////////////////////////////////////////////////////////////////////////////
 //willowloop para exibir posts com thumbnail como shotcode
 	function willow_loop_shortcode( $atts ) {
@@ -505,18 +506,7 @@ function base_pagination() {
 			'pula'=> '',
 	    ), $atts ) );
 	    $output = 	'<div class="clear"></div>
-					<div id="slider-oficinas" class="flexslider no-bg no-bullets"><script type="text/javascript" charset="utf-8">
-					                jQuery(document).ready(function ($) {
-					                    $(window).load(function() {
-					                        $(".flexslider").flexslider({
-					                            after: function(){
-					                                $(window).trigger("contentResized");
-					                            }
-					                        });
-
-					                    });
-					                });
-					                </script><ul class="slides">';
+					<div id="myCarousel" class="carousel slide" data-ride="carousel">';
 	    $args = array(
 	        'post_type' => $tipo,
 			'category' => $categoria,
@@ -526,55 +516,64 @@ function base_pagination() {
 			'order'=>'ASC'
 	    );
 	    $willow_query = new  WP_Query( $args );
+		$num=$willow_query->post_count;
+		$count=0;
+		echo 'count:'.$count;
+		echo '<div id="myCarousel" class="carousel slide" data-ride="carousel">
+		
+		<!-- Carousel indicators -->
+	    		<ol class="carousel-indicators">';
+		while ($count < $num){
+			echo '<li data-target="#myCarousel" data-slide-to="'.$count.'" class="';
+			if ($count == 0){
+				echo 'active';
+			}
+			echo '"></li>';
+			$count++;
+		}
+		$count=0;
+	    echo '</ol>';
+		echo '<div class="carousel-inner">';
 		while ( $willow_query->have_posts() ) : $willow_query->the_post();
-	    $link = get_field('link2');   
-	    $regulamento = get_field('regulamento');   
-		if ($tipo == 'oficinas'){
-					$output .= '
-						<li class ="item-oficinas destaques">'.
-							'<div class="titulo_destaque"><a href="'.
-			                   get_permalink().'">'.get_the_title().'</a>
-							</div>
-							
-							<div class="imagem_destaque">
-								<a href="'.get_permalink().'">'.get_the_post_thumbnail().'</a>
-							</div>
-							
-							<div class="link_destaque">
-								<a href="'.get_permalink().'">'. get_the_excerpt(4000).'</a>
-								<div class="botoes-destaque">';
-								if ($regulamento != ''){
-									$output .= 		'<div class="destaque botao regulamento">
-														<a target=_blank href="'.$regulamento.'">REGULAMENTO</a>
-													</div>';
-								}
-								if ($link != ''){
-									$output .= 	'<div class="botao destaque inscricao">
-														<a target=_blank href="'.$link.'"/>INSCRIÇÃO</a>
-													</div>';
-								}
+	    	echo '<div class="item';
+				if ($count == 0){
+					echo ' active';
+				}
+				echo'">
+					<div class="img-carousel col-md-6">';
+			    		the_post_thumbnail('slider');
+					echo '</div>
+					<div class="carousel-caption col-md-6">
+		           	  	<div class="titulo-carousel">
+			           		<h3>';
+								the_title();
+							echo '</h3>
+						</div>
+						<div class="texto-carousel">
+							<p>';
+								the_excerpt();
+							echo '</p>
+			            </div>
+			 		</div>';
+			echo '</div><!--item-->';
 					
-				$output .=		'</div><!--botoes-destaque-->
-							</div><!--link_destaque-->
-						</li><!--item-oficinas destaques-->';		
-			}
-			else{
-				$output .= '<li class ="destaques">
-								<div class="titulo_destaque meio">
-									<a href="'.get_permalink().'">'. get_the_title().'</a>
-								</div>
-								<div class="link_destaque meio">
-									<a href="'.get_permalink().'">' . get_the_excerpt(4000)."</a>
-								</div>
-							</li>";
-			}
-			
-	       
-	           
+			$count++;
 	    endwhile;
+	
 	    wp_reset_query();
-	    $output .= '</ul></div>'; //fecha flexslider e slides 
-	    return $output;
+		echo '</div>
+		<!-- Carousel items -->
+	
+	
+	    <!-- Carousel nav -->
+	    <a class="carousel-control left" href="#myCarousel" data-slide="prev">
+	        <span class="glyphicon glyphicon-chevron-left"></span>
+	    </a>
+	    <a class="carousel-control right" href="#myCarousel" data-slide="next">
+	        <span class="glyphicon glyphicon-chevron-right"></span>
+	    </a>
+	</div><!--carousel-inner-->';
+		
 	}
 	add_shortcode('willowloop', 'willow_loop_shortcode');
 // fim do willowloop

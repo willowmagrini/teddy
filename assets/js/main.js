@@ -24,4 +24,6 @@ jQuery(document).ready(function($) {
 	altura = parseInt(altura) - 345;
 	$('#main').css('min-height', altura+'px');
 	$('.modal-dialog').css('top',altura_modal+'px');
+
+   	
 });
