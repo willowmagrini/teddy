@@ -57,9 +57,11 @@ if ( $the_query->have_posts() ) {
 		$desc = get_the_content();
 		?>
 		<li class='video-portfolio col-md-3 ' id="video-<?php echo $post->ID;?>">
-			<a data-backdrop="static" 
-			   data-keyboard="false" titulo="<?php echo $titu;?>"target=_blank class="link-video" href="<?php echo get_post_meta( $post->ID, 'link_do_video', true );?>">
-				<img src="<?php echo get_field('link_do_video');?>">
+			<a data-backdrop="static" data-keyboard="false" titulo="<?php echo $titu;?>"target=_blank class="link-video" href="<?php echo get_post_meta( $post->ID, 'link_do_video', true );?>">
+				<div class="capa">
+					<div class="capa-hover"><h3><?php echo $titu;?></h3></div>
+					<img src="<?php echo get_field('link_do_video');?>">
+				</div>
 			</a>
 		</li>
 		<?php
