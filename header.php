@@ -31,7 +31,7 @@
 	<?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>>
+<body id="<?php echo $post->post_name;?>" <?php body_class(); ?>>
 	<div class="container col-md-12 sem-margem">
 		<header id="header" role="banner">
 			<div id="h-topo"><!--topo do header-->

@@ -13,7 +13,8 @@
 get_header(); ?>
 
 	<div id="primary" class="<?php echo odin_classes_page_full(); ?>">
-		<div id="content" class="site-content" role="main">
+		<div class="col-md-2"></div>
+		<div id="content-portfolio" class="site-content col-md-8" role="main">
 
 			<?php
 				// Start the Loop.
@@ -23,9 +24,7 @@ get_header(); ?>
 					get_template_part( 'content', 'page' );
 
 					// If comments are open or we have at least one comment, load up the comment template.
-					if ( comments_open() || get_comments_number() ) :
-						comments_template();
-					endif;
+					
 				endwhile;
 			?>
 
