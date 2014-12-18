@@ -21,9 +21,10 @@ jQuery(document).ready(function($) {
 	//ajusta altura do peincipal 
 	altura=$( window ).height();
 	altura_modal=parseInt(altura)/2-225;
-	altura = parseInt(altura) - 345;
-	$('#main').css('min-height', altura+'px');
+	altura = parseInt(altura-100);
+	jQuery('#primary').css('min-height', altura+'px');
 	$('.modal-dialog').css('top',altura_modal+'px');
+	
 
    	
 });

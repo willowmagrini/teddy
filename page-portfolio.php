@@ -32,6 +32,7 @@ get_header();?>
 
 			    <?php } ?>
 			</ul>
+			<div id="loading"></div>
 			<div id="lista-videos"></div>
 			<div id="modal-portfolio" data-keyboard="false" data-backdrop="static" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			    <div class="modal-dialog">

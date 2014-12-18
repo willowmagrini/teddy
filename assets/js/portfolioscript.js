@@ -9,15 +9,15 @@ jQuery(document).ready(function(){
 		id = jQuery(this).attr("id");
 		jQuery(this).children('a').attr("class", 'ativo');
 		url = jQuery(this).children('a').attr("href");
-		jQuery("#lista-videos").fadeOut()
-	   							.load(url)
-						   		.fadeIn()
-								.attr('class',id);
+		jQuery("#lista-videos").fadeOut('fast',function(){
+			jQuery('#loading').show();
+		});
+	   		jQuery("#lista-videos").load(url, function() {
+				jQuery("#lista-videos").fadeIn()
+				.attr('class',id);
+				jQuery('#loading').hide();
+			});
 	   	});
-	
-	
-	
-	
 	// jQuery( ".categorias_portfolio" ).each(function( index ) {
 	// 	  console.log( index + ": " + $( this ).text() );
 	// 	});

@@ -1,4 +1,7 @@
 ﻿@import url(../../style.css);
+#portf{
+	padding:0;
+}
 a, p, div, h1, h2, h3, h4, h5, span{
 	font-family:lato;
 }
@@ -130,7 +133,17 @@ float:none;
 }
 /*footer*/
 /*portfolio*/
-
+#loading{
+	display:none;
+	background-image:url('../images/loading.gif');
+	width: 100px;
+	height: 100px;
+	position: relative;
+	left: 50%;
+	margin-left: -50px;
+	top: 100px;
+	background-repeat: no-repeat;
+}
 #menu-port{
 	margin-bottom:20px
 }
@@ -368,7 +381,7 @@ label{
 	}
 	#header-image {
 		max-width:51%;
-		margin-top: 80px;
+		margin-top: 42px;
 	}
 	#menu-port li a {
 		font-size: 0.9em;
