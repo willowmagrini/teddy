@@ -13,10 +13,10 @@ get_header('front'); ?>
 				<a href="institucional">
 					<img src="<?php echo get_template_directory_uri();?>/assets/images/bra.png">
 				</a>
-				<a href="en/institucional">
+				<a href="institucional/?lang=en">
 					<img src="<?php echo get_template_directory_uri();?>/assets/images/eua.png">
 				</a>
-				<a href="it/institucional">
+				<a href="institucional/?lang=it">
 					<img src="<?php echo get_template_directory_uri();?>/assets/images/ita.png">
 				</a>
 			</div>

@@ -21,9 +21,15 @@ jQuery('.link-video').click(function (e) {
 jQuery('.page-numbers').click(function (e) {
 	e.preventDefault();
 	src=jQuery(this).attr('href');
-	jQuery("#lista-videos").fadeOut()
-							.load(src)
-							.fadeIn();
+	jQuery("#lista-videos").fadeOut('fast', function(){
+		jQuery('#loading').show();
+		jQuery(this).load(src, function(){
+			jQuery(this).fadeIn();
+			jQuery('#loading').hide();
+		})
+	});
+							
+							
 });
 jQuery('#modal-portfolio button').click(function () {
 	jQuery('#modal-portfolio iframe').removeAttr('src');

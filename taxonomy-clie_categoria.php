@@ -1,7 +1,7 @@
 <?php 
 $url = $_SERVER['REQUEST_URI'];
 $categoria=explode('/',$url);
-$categoria = $categoria[3];
+$categoria = $categoria[2];
 ?>
 <script>
 
