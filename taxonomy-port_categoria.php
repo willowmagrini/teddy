@@ -9,7 +9,7 @@ jQuery('.link-video').click(function (e) {
 	var src = jQuery(this).attr("href");
 	var tit = jQuery(this).attr("titulo");
 	var src = src.replace("watch?v=", "v/");
-	src = src+'?rel=0&autoplay=1&controls=0&showinfo=0&fs=1';
+	src = src+'?rel=0&autoplay=1&controls=1&showinfo=0&fs=1';
 	jQuery('#modal-portfolio').modal('show');
 	jQuery('#modal-portfolio iframe').attr('src', src);
 	jQuery('.modal-header').append('<h4>'+ tit +'</h4>');
@@ -56,7 +56,7 @@ if ( $the_query->have_posts() ) {
 		$titu =  get_the_title();
 		$desc = get_the_content();
 		?>
-		<li class='video-portfolio col-md-3 ' id="video-<?php echo $post->ID;?>">
+		<li class='video-portfolio col-sm-3 ' id="video-<?php echo $post->ID;?>">
 			<a data-backdrop="static" data-keyboard="false" titulo="<?php echo $titu;?>"target=_blank class="link-video" href="<?php echo get_post_meta( $post->ID, 'link_do_video', true );?>">
 				<div class="capa">
 					<div class="capa-hover"><h3><?php echo $titu;?></h3></div>

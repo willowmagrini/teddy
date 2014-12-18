@@ -32,10 +32,10 @@
 </head>
 
 <body id="<?php echo $post->post_name;?>" <?php body_class(); ?>>
-	<div class="container col-md-12 sem-margem">
+	<div class="container col-sm-12 sem-margem">
 		<header id="header" role="banner">
 			<div id="h-topo"><!--topo do header-->
-				<div id="logo-menu" class="col-md-10 centro"><!--logo-menu-->
+				<div id="logo-menu" class="col-sm-10 centro"><!--logo-menu-->
 					<?php
 						$header_image = get_header_image();
 						if ( ! empty( $header_image ) ) :

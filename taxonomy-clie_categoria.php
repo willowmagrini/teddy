@@ -21,6 +21,8 @@ $args = array(
 	'post_type' => 'clientes',
 	'clie_categoria'=> $categoria,
 	'posts_per_page' => 9999,
+	'orderby'=> 'title', 
+	'order' => 'ASC',
 	'paged'  =>  false
 	
 	
@@ -36,7 +38,7 @@ if ( $the_query->have_posts() ) {
 		$titu =  get_the_title();
 		$desc = get_the_content();
 		?>
-		<li class='clientes col-md-4 ' id="cliente-<?php echo $post->ID;?>">
+		<li class='clientes col-sm-4 ' id="cliente-<?php echo $post->ID;?>">
 				<div class="capa">
 					<h4>
 						<?php echo $titu;?>

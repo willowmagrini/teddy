@@ -531,18 +531,9 @@ remove_filter( 'the_content', 'wpautop' );
 	    $willow_query = new  WP_Query( $args );
 		$num=$willow_query->post_count;
 		$count=0;
-		echo '<div id="myCarousel" class="col-md-6 carousel slide" data-ride="carousel">
+		echo '<div id="myCarousel" class="col-sm-6 carousel slide" data-ride="carousel">';
 		
-		<!-- Carousel indicators -->
-	    		<ol class="carousel-indicators">';
-		while ($count < $num){
-			echo '<li data-target="#myCarousel" data-slide-to="'.$count.'" class="';
-			if ($count == 0){
-				echo 'active';
-			}
-			echo '"></li>';
-			$count++;
-		}
+	
 		$count=0;
 	    echo '</ol>';
 		echo '<div class="carousel-inner">';
@@ -561,11 +552,6 @@ remove_filter( 'the_content', 'wpautop' );
 								the_title();
 							echo '</h3>
 						</div>
-						<div class="texto-carousel">
-							<p>';
-								the_excerpt();
-							echo '</p>
-			            </div>
 			 		</div>';
 			echo '</div><!--item-->';
 					
@@ -618,5 +604,8 @@ remove_filter( 'the_content', 'wpautop' );
 		add_action( 'login_enqueue_scripts', 'my_login_logo' );
 
 //////////////////////////////////////////////////////////////	///////////////////////////////////////////////////////////////
-	/////////////////////custom logo/////////////////////////////
-		///////////////////////////////////////////////////////////////
+/////////////////////custom logo/////////////////////////////
+///////////////////////////////////////////////////////////////
+		
+add_filter('show_admin_bar', '__return_false');
+		

@@ -6,7 +6,7 @@
 
 get_header('front'); ?>
 
-	<div id="primary" class="<?php echo odin_classes_page_full(); ?>">
+	<div id="primary" class="col-sm-12">
 		<div id="content" class="site-content" role="main">
 			<img src="<?php echo get_template_directory_uri()?>/assets/images/logo-preto.png">
 			<div class= "linguas">

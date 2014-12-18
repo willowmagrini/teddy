@@ -62,12 +62,18 @@ float:none;
 }
 /*menu*/
 /*conteudo*/
+#firstHeading{
+	width: 65%;
+	font-size: 1.6em;
+	margin: 9px 0 0 10px;
+	display:inline-block;
+}
 #main{
 	min-height:300px;
 }
 #primary{
 	margin-top:50px;
-		font-size:1.1em;
+	font-size:1.1em;
 }
 /*conteudo*/
 /*footer	*/
@@ -92,6 +98,7 @@ float:none;
 	height:30px;
 	border:0px;
 	display:inline-block;
+	margin-left:10px;
 }
 #facebook{
 	background-image:url('../images/social.png');
@@ -123,6 +130,7 @@ float:none;
 }
 /*footer*/
 /*portfolio*/
+
 #menu-port{
 	margin-bottom:20px
 }
@@ -163,13 +171,21 @@ iframe{
 #menu-port li a.ativo{
 	color:#dca61b;
 }
+.modal-content{
+	background:transparent;
+}
 .modal-backdrop.in {
 	opacity: 0.8;
 	filter: alpha(opacity=80);
 }
 .modal-header {
-padding: 5px;
-text-align: center;
+	padding: 5px;
+	border: none;
+	color: #fff;
+}
+.close{
+	color: #fff;
+	opacity: 1;
 }
 .pagination a{
 	color:#000;
@@ -219,8 +235,9 @@ text-align: center;
 #home img{
 	margin-bottom:35px;
 }
-
-
+#home header{
+	min-height:90px;
+}
 /*home*/
 /*estrutura*/
 #myCarousel{
@@ -229,6 +246,15 @@ text-align: center;
 }
 .attachment-slider,.carousel-control{
 	border-radius:6px;
+}
+.titulo-carousel h3{
+	margin:0;
+}
+#myCarousel:hover .carousel-control, #myCarousel:hover  .titulo-carousel{
+	visibility:visible;
+}
+.carousel-control, .titulo-carousel {
+	visibility:hidden;
 }
 /*estrutura*/
 /*clientes*/
@@ -274,14 +300,95 @@ label{
 #endereco a:hover{
 	color:#dca61b;
 }
+#telefone{
+	max-width: 65%;
+}
 /*contato*/
-
+/*home*/
 
 /*reponsividade*/
-
+@media (max-width: 767px){
+	#primary{
+		margin: 20px 40px;
+	}
+	#email, #telefone, #nome {
+		width: 70%;
+	}
+	.site-social {
+		margin-top: 20px;
+	}
+	.navbar-nav {
+		margin: 0 15px;
+		background:#F3CF29;
+		border:1px solid #dca61b ;
+	}
+	.navbar-default .navbar-collapse{
+		border:none;
+	}
+	.navbar .menu-principal li a {
+		color: #dca61b;
+		padding: 10px 15px;
+		margin: 0 0 0;
+	}
+	.col-sm-10{
+		margin:0 30px;
+	}
+	#primary{
+		text-align:center;
+	}
+	.video-portfolio{
+		margin-bottom:20px;
+	}
+	.capa-hover{
+		width:98%;
+	}
+	#lista-videos ul .clearfix{
+		display:none;
+	}
+	#lista-videos ul li{
+		margin:5px 20px;
+	}
+	#myCarousel{
+		margin:5% auto;
+		width:80%;
+	}
+	#map-canvas{
+		width:80%;
+		margin: 10px auto;
+	}
+	#home header{
+		min-height:20px;
+	}
+	#logo-menu{
+		margin:0;
+		padding-left:20px;
+	}
+	#header-image img{
+		width:100%;
+	}
+	#header-image {
+		max-width:51%;
+		margin-top: 80px;
+	}
+	#menu-port li a {
+		font-size: 0.9em;
+	}
+	.assistive-text{
+		display:none;
+	}
+	
+}
 @media (min-width: 768px){
 	.container {
-		width: 100%;
+	width: 100%;
+	}
+	
+	
+}
+@media (max-width: 900px){
+	.navbar .menu-principal li a{
+		font-size:0.8em;
+		padding:10px 10px;
 	}
 }
 /*reponsividade*/

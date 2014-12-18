@@ -20,7 +20,7 @@
 		</div><!-- #main -->
 
 		<footer id="footer" role="contentinfo">
-			<div id="" class="centro col-md-10">
+			<div id="" class="centro col-sm-10">
 				<div class="site-info">
 					<span>Faccioli Films Ltda. &copy; <?php echo date( 'Y' ); ?> </span>
 				</div><!-- .site-info -->

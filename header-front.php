@@ -32,7 +32,7 @@
 </head>
 
 <body id="<?php echo $post->post_name;?>" <?php body_class(); ?>>
-	<div class="container col-md-12 sem-margem">
+	<div class="container col-sm-12 sem-margem">
 		<header id="header" role="banner">
 		
 		</header><!-- #header -->

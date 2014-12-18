@@ -12,9 +12,9 @@
 
 get_header(); ?>
 
-	<div id="primary" class="<?php echo odin_classes_page_full(); ?>">
-		<div class="col-md-2"></div>
-		<div id="content" class="site-content col-md-8" role="main">
+	<div id="primary" class="col-sm-12">
+		<div class="col-sm-2"></div>
+		<div id="content" class="site-content col-sm-8" role="main">
 
 			<?php
 				// Start the Loop.
