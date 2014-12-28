@@ -454,14 +454,25 @@ if ( is_page_template( 'page-portfolio.php' )) {
 		wp_enqueue_script('portfolio-js'); 
 	}
 
-elseif ( is_page_template( 'page-clientes.php' )) { 
+	elseif ( is_page_template( 'page-clientes.php' )) { 
 		wp_register_script('clientes-js', ( get_bloginfo('template_url').'/assets/js/clientescript.js'), array('jquery')); 
 		wp_enqueue_script('clientes-js'); 
 	}
-elseif  (is_page_template( 'page-contato.php' )){
+	elseif  (is_page_template( 'page-contato.php' )){
 	//maps
-	wp_enqueue_script('google-maps', 'https://maps.googleapis.com/maps/api/js');
-}
+		wp_enqueue_script('google-maps', 'https://maps.googleapis.com/maps/api/js');
+
+	//	wp_enqueue_script('formulario-ajax', plugins_url( 'formulario-ajax/formulario-ajax.js' ), array('jquery'));
+
+
+		// $localize = array(
+		// 			'ajaxurl' => admin_url( 'admin-ajax.php' )
+		// 			);
+		// 		wp_localize_script('formulario-ajax', 'SCF', $localize);
+		// 		
+	
+	}
+	
 }
 add_action( 'wp_print_scripts', 'scripts'); // now just run the function
 ///////////////////////////////////////////////////////////////

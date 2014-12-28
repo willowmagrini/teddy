@@ -14,31 +14,10 @@ get_header(); ?>
 		
 		<div id="content" class="site-content col-sm-8" role="main">
 			<div id="map-canvas" class="col-sm-6"></div>
-		    
-			<form  class="col-sm-6" role="form">
-				<div id="endereco">
-					<p>Rua dos Ingleses, 123 - Bela Vista   |   São Paulo - SP - Brasil</p>
-					<p>CEP 01329-000   |   Tel/Fax +55 11 3262 3344</p>
-					<p>	<a href="mailto:teddy@teddyfilmes.com.br"> teddy@teddyfilmes.com.br </a> | Faccioli Films Ltda.</p>
-				</div>
-				<div class="form-group">
-			    	<label for="nome">Nome</label>
-			    	<input id="nome"type="text" class="form-control" id="nome" placeholder="Nome">
-			  	</div>
-			  	<div class="form-group">
-			    	<label for="email">E-mail</label>
- 			    	<input type="email" class="form-control" id="email" placeholder="email">
-				</div>
-				<div class="form-group">
-			    	<label for="telefone">Telefone</label>
- 			    	<input type="tel" class="form-control" id="telefone" placeholder="telefone">
-			  	</div>
-				<div class="form-group">
-					<label for="mensagem">Mensagem</label>
-				  	<textarea class="form-control" id="mensagem" name="mensagem"></textarea>
-				  	<button type="submit" class="btn btn-default">Enviar</button>
-				</div>
-			</form>
+		   
+			
+			<?php echo scf_html();?>
+			
 
 		</div><!-- #content -->
 	</div><!-- #primary -->

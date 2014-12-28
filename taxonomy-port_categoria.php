@@ -8,8 +8,8 @@ jQuery('.link-video').click(function (e) {
 	e.preventDefault();
 	var src = jQuery(this).attr("href");
 	var tit = jQuery(this).attr("titulo");
-	var src = src.replace("watch?v=", "v/");
-	src = src+'?rel=0&autoplay=1&controls=1&showinfo=0&fs=1';
+	var src = src.replace("watch?v=", "embed/");
+	src = src+'?rel=0&html5=1&autoplay=1&controls=1&showinfo=0&fs=1';
 	jQuery('#modal-portfolio').modal('show');
 	jQuery('#modal-portfolio iframe').attr('src', src);
 	jQuery('.modal-header').append('<h4>'+ tit +'</h4>');
